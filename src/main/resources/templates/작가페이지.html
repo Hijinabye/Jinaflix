@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✨ 마법을 펼쳐보세요 ✨</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1c1c1c;
+      color: #ff69b4;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      border: 3px solid #ff69b4;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    h1 {
+      font-size: 42px;
+      text-align: center;
+      color: #ff1493;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    #title {
+      width: 100%;
+      font-size: 24px;
+      padding: 10px;
+      border: 2px solid #ff69b4;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      color: #fff;
+      background-color: #333;
+    }
+
+    .editor {
+      width: 100%;
+      min-height: 300px;
+      border: 2px dashed #ff69b4;
+      padding: 15px;
+      border-radius: 10px;
+      background-color: #333;
+      color: #fff;
+      font-size: 18px;
+      line-height: 1.6;
+      overflow-y: auto;
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    .editor:empty:before {
+      content: "여기에 글을 작성해보세요 🪄✨";
+      position: absolute;
+      color: #ff69b4;
+      font-size: 18px;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+    }
+
+    .editor:focus:empty:before {
+      content: "";
+    }
+
+    .editor:focus {
+      outline: none;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px 5px;
+      border: none;
+      background-color: #ff69b4;
+      color: #fff;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn:hover {
+      background-color: #ff1493;
+      transform: scale(1.05);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      margin: 10px auto;
+      border-radius: 10px;
+    }
+
+    .slider-container {
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    .slider-container input {
+      width: 80%;
+    }
+
+    #published-container {
+      display: none;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .saved-message {
+      display: none;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* 새로 추가된 애니메이션 효과 */
+    .inspiration-screen {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      color: #ff69b4;
+      font-size: 40px;
+      text-align: center;
+      padding-top: 30%;
+      opacity: 0;
+      animation: fadeIn 3s forwards;
+      z-index: 1000;
+    }
+
+    /* FadeIn 애니메이션 정의 */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>✨ 공주님의 마법 글 작성기 ✨</h1>
+
+    <!-- 제목 작성란 -->
+    <input type="text" id="title" placeholder="제목을 입력하세요 💌" />
+
+    <!-- 글 작성 영역 -->
+    <div id="editor" contenteditable="true" class="editor">
+      여기에 글을 작성해보세요 ✨
+    </div>
+
+    <!-- 사진 크기 조절 -->
+    <div class="slider-container" style="display: none;">
+      <label for="image-size">사진 크기 조절: </label>
+      <input type="range" id="image-size" min="50" max="500" value="300">
+    </div>
+
+    <!-- 버튼들 -->
+    <input type="file" id="image-upload" style="display: none;" accept="image/*">
+    <button class="btn" id="upload-btn">사진 추가 📷</button>
+    <button class="btn" id="preview-btn">미리보기 👀</button>
+    <button class="btn" id="publish-btn">발행하기 ✨</button>
+    <button class="btn" id="save-btn">저장하기 💾</button>
+
+    <!-- 작가 활동 클릭 시 애니메이션 효과 -->
+    <button class="btn" id="start-writing-btn">작가로서 활동 시작하기 ✨</button>
+  </div>
+
+  <!-- 발행 완료 화면 -->
+  <div id="published-container">
+    <h1>📜 발행된 글</h1>
+    <div id="published-content"></div>
+    <button class="btn" id="home-btn">홈 화면 가기 🏠</button>
+  </div>
+
+  <!-- 저장 완료 메시지 -->
+  <div class="saved-message" id="saved-message">글이 저장되었습니다! 🎉</div>
+
+  <!-- 새로운 애니메이션 효과를 위한 화면 -->
+  <div class="inspiration-screen" id="inspiration-screen">
+    당신의 상상을 펼쳐보세요! ✨
+  </div>
+
+  <script>
+    const editor = document.getElementById('editor');
+    const imageUpload = document.getElementById('image-upload');
+    const uploadBtn = document.getElementById('upload-btn');
+    const publishBtn = document.getElementById('publish-btn');
+    const previewBtn = document.getElementById('preview-btn');
+    const saveBtn = document.getElementById('save-btn');
+    const publishedContainer = document.getElementById('published-container');
+    const publishedContent = document.getElementById('published-content');
+    const homeBtn = document.getElementById('home-btn');
+    const imageSizeSlider = document.getElementById('image-size');
+    const sliderContainer = document.querySelector('.slider-container');
+    const titleInput = document.getElementById('title');
+    const savedMessage = document.getElementById('saved-message');
+    const startWritingBtn = document.getElementById('start-writing-btn');
+    const inspirationScreen = document.getElementById('inspiration-screen');
+
+    let currentImage = null;
+
+    // 사진 추가 버튼
+    uploadBtn.addEventListener('click', () => {
+      imageUpload.click();
+    });
+
+    // 이미지 업로드 처리
+    imageUpload.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+          const imgElement = document.createElement('img');
+          imgElement.src = e.target.result;
+          imgElement.style.width = "300px"; // 기본 크기 설정
+
+          currentImage = imgElement;
+          editor.appendChild(imgElement);
+          sliderContainer.style.display = 'block';
+        };
+
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // 사진 크기 조절
+    imageSizeSlider.addEventListener('input', () => {
+      if (currentImage) {
+        currentImage.style.width = `${imageSizeSlider.value}px`;
+      }
+    });
+
+    // 글 미리보기
+    previewBtn.addEventListener('click', () => {
+      const content = editor.innerHTML.trim();
+      const title = titleInput.value.trim();
+      if (content && title) {
+        publishedContent.innerHTML = `<h2>${title}</h2><p>${content}</p>`;
+        publishedContainer.style.display = 'block';
+        document.querySelector('.container').style.display = 'none';
+      } else {
+        alert("제목과 내용을 입력해주세요!");
+      }
+    });
+
+    // 글 발행
+    publishBtn.addEventListener('click', () => {
+      const content = editor.innerHTML.trim();
+      const title = titleInput.value.trim();
+      if (content && title) {
+        publishedContent.innerHTML = `<h2>${title}</h2><p>${content}</p>`;
+        alert("글이 발행되었습니다! ✨");
+        editor.innerHTML = "";
+        titleInput.value = "";
+        currentImage = null;
+        sliderContainer.style.display = 'none';
+      } else {
+        alert("제목과 내용을 입력해주세요!");
+      }
+    });
+
+    // 저장 버튼
+    saveBtn.addEventListener('click', () => {
+      savedMessage.style.display = 'block';
+      setTimeout(() => {
+        savedMessage.style.display = 'none';
+      }, 3000);
+    });
+
+    // 홈 화면으로 가기
+    homeBtn.addEventListener('click', () => {
+    publishedContainer.style.display = 'none';
+    document.querySelector('.container').style.display = 'block';
+    });
+
+    // 작가로서 활동 시작하기 버튼
+    startWritingBtn.addEventListener('click', () => {
+    inspirationScreen.style.display = 'block';
+    setTimeout(() => {
+        inspirationScreen.style.display = 'none';
+    }, 3000);
+    });
+
+    // 기본 클릭 시 편집영역에서 글씨 사라지기
+    editor.addEventListener('focus', () => {
+    if (editor.innerHTML === "여기에 글을 작성해보세요 🪄✨") {
+        editor.innerHTML = "";
+    }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장르별 작품</title>
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .genre-section {
+            margin-bottom: 50px;
+        }
+        .poster-container {
+            display: flex;
+            overflow-x: scroll;
+            scroll-behavior: smooth;
+            gap: 10px;
+            padding: 10px 0;
+        }
+        .poster {
+            flex: 0 0 200px;
+            text-align: center;
+            position: relative;
+        }
+        .poster img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .views, .likes {
+            font-size: 14px;
+            color: #888;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1;
+        }
+        .slider-btn.left {
+            left: 10px;
+        }
+        .slider-btn.right {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- 장르별 TOP 10 Section -->
+    <div class="genre-section">
+        <h2>장르별 TOP 10</h2>
+        <div class="poster-container" id="top10">
+            <div class="poster">
+                <img src="/image/장르표지01.jpg" alt="장르표지01">
+                <div class="title">작품01</div>
+                <div class="views">조회수: 1234</div>
+                <div class="likes">좋아요: 567</div>
+            </div>
+            <div class="poster">
+                <img src="/image/장르표지02.jpg" alt="장르표지02">
+                <div class="title">작품02</div>
+                <div class="views">조회수: 2345</div>
+                <div class="likes">좋아요: 678</div>
+            </div>
+            <div class="poster">
+                <img src="/image/장르표지03.jpg" alt="장르표지03">
+                <div class="title">작품03</div>
+                <div class="views">조회수: 3456</div>
+                <div class="likes">좋아요: 789</div>
+            </div>
+            <div class="poster">
+                <img src="/image/장르표지04.jpg" alt="장르표지04">
+                <div class="title">작품04</div>
+                <div class="views">조회수: 4567</div>
+                <div class="likes">좋아요: 890</div>
+            </div>
+            <div class="poster">
+                <img src="/image/장르표지05.jpg" alt="장르표지05">
+                <div class="title">작품05</div>
+                <div class="views">조회수: 5678</div>
+                <div class="likes">좋아요: 123</div>
+            </div>
+            <div class="poster">
+                <img src="/image/장르표지06.jpg" alt="장르표지06">
+                <div class="title">작품06</div>
+                <div class="views">조회수: 6789</div>
+                <div class="likes">좋아요: 234</div>
+            </div>
+            <div class="poster">
+                <img src="/image/장르표지07.jpg" alt="장르표지07">
+                <div class="title">작품07</div>
+                <div class="views">조회수: 7890</div>
+                <div class="likes">좋아요: 345</div>
+            </div>
+            <div class="poster">
+                <img src="/image/장르표지08.jpg" alt="장르표지08">
+                <div class="title">작품08</div>
+                <div class="views">조회수: 8901</div>
+                <div class="likes">좋아요: 456</div>
+            </div>
+            <div class="poster">
+                <img src="/image/장르표지09.jpg" alt="장르표지09">
+                <div class="title">작품09</div>
+                <div class="views">조회수: 9012</div>
+                <div class="likes">좋아요: 567</div>
+            </div>
+            <div class="poster">
+                <img src="/image/장르표지10.jpg" alt="장르표지10">
+                <div class="title">작품10</div>
+                <div class="views">조회수: 10123</div>
+                <div class="likes">좋아요: 678</div>
+            </div>
+        </div>
+        <!-- 슬라이드 버튼 -->
+        <button class="slider-btn left" onclick="moveSlide('top10', -1)">&#10094;</button>
+        <button class="slider-btn right" onclick="moveSlide('top10', 1)">&#10095;</button>
+    </div>
+
+    <!-- 신작 Section -->
+    <div class="genre-section">
+        <h2>신작</h2>
+        <div class="poster-container" id="newReleases">
+            <div class="poster">
+                <img src="/image/장르표지11.jpg" alt="장르표지11">
+                <div class="title">신작01</div>
+                <div class="views">조회수: 345</div>
+                <div class="likes">좋아요: 678</div>
+            </div>
+            <div class="poster">
+                <img src="/image/장르표지12.jpg" alt="장르표지12">
+                <div class="title">신작02</div>
+                <div class="views">조회수: 567</div>
+                <div class="likes">좋아요: 789</div>
+            </div>
+            <!-- 추가 작품들... -->
+        </div>
+        <!-- 슬라이드 버튼 -->
+        <button class="slider-btn left" onclick="moveSlide('newReleases', -1)">&#10094;</button>
+        <button class="slider-btn right" onclick="moveSlide('newReleases', 1)">&#10095;</button>
+    </div>
+
+    <!-- 인기작 Section -->
+    <div class="genre-section">
+        <h2>인기작</h2>
+        <div class="poster-container" id="popular">
+            <div class="poster">
+                <img src="/image/장르표지13.jpg" alt="장르표지13">
+                <div class="title">인기작01</div>
+                <div class="views">조회수: 987</div>
+                <div class="likes">좋아요: 123</div>
+            </div>
+            <!-- 추가 작품들... -->
+        </div>
+        <!-- 슬라이드 버튼 -->
+        <button class="slider-btn left" onclick="moveSlide('popular', -1)">&#10094;</button>
+        <button class="slider-btn right" onclick="moveSlide('popular', 1)">&#10095;</button>
+    </div>
+
+    <!-- 추천작 Section -->
+    <div class="genre-section">
+        <h2>추천작</h2>
+        <div class="poster-container" id="recommendations">
+            <div class="poster">
+                <img src="/image/장르표지14.jpg" alt="장르표지14">
+                <div class="title">추천작01</div>
+                <div class="views">조회수: 456</div>
+                <div class="likes">좋아요: 789</div>
+            </div>
+            <!-- 추가 작품들... -->
+        </div>
+        <!-- 슬라이드 버튼 -->
+        <button class="slider-btn left" onclick="moveSlide('recommendations', -1)">&#10094;</button>
+        <button class="slider-btn right" onclick="moveSlide('recommendations', 1)">&#10095;</button>
+    </div>
+</div>
+
+<script>
+    function moveSlide(id, direction) {
+        var container = document.getElementById(id);
+        var scrollAmount = direction * 250; // 슬라이드의 크기
+        container.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+</script>
+
+</body>
+</html>

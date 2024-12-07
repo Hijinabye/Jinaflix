@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JINFlIX - 선택</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #141414;
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+            width: 80%;
+            max-width: 600px;
+            opacity: 0;
+            animation: fadeInContainer 2s ease-out forwards;
+        }
+
+        .logo img {
+            width: 150px;
+            margin-bottom: 30px;
+            margin-top: 40px;
+            opacity: 0;
+            animation: slideInLogo 1s ease-out forwards;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #ff4081;
+            margin-bottom: 30px;
+            font-weight: bold;
+            opacity: 0;
+            animation: fadeInTitle 2s 0.5s forwards;
+        }
+
+        p {
+            font-size: 18px;
+            color: #ccc;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeInText 2s 1s forwards;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 20px 40px;
+            background-color: #fe6397;
+            color: #141414;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            margin: 10px;
+            opacity: 0;
+            animation: fadeInButton 2s 1.5s forwards;
+        }
+
+        .btn:hover {
+            background-color: #fe6397;
+            transform: scale(1.1);
+        }
+
+        .black-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .magic-text {
+            font-size: 50px;
+            font-weight: bold;
+            color: #ff4081;
+            opacity: 0;
+            animation: showMagicText 3s forwards;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .btn {
+                font-size: 18px;
+                padding: 15px 30px;
+            }
+
+            .magic-text {
+                font-size: 35px;
+            }
+        }
+
+        @keyframes fadeInContainer {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideInLogo {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInTitle {
+            0% { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInText {
+            0% { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInButton {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes showMagicText {
+            0% { opacity: 0; transform: scale(0); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="logo">
+        <img src="image/logo 설명 0.png" alt="JINFlIX 로고">
+    </div>
+
+    <h1>JINFlIX에 오신 것을 환영합니다! 🎉</h1>
+
+    <p>독자 또는 작가로서 활동을 시작하려면 아래에서 선택하세요. 💖</p>
+
+    <div>
+        <a href="#" class="btn" id="reader-btn">독자로 활동 📚</a>
+        <a href="#" class="btn" id="writer-btn">작가로 활동 ✍️</a>
+    </div>
+</div>
+
+<div class="black-screen" id="black-screen">
+    <div class="magic-text">✨마법의 세계에 온걸 환영해 ✨</div>
+</div>
+
+<script>
+    document.getElementById("reader-btn").addEventListener("click", function(event) {
+        event.preventDefault();
+
+        const blackScreen = document.getElementById("black-screen");
+        blackScreen.style.display = "flex";
+
+        setTimeout(function() {
+            window.location.href = "/JInFlIx";
+        }, 2000);
+    });
+
+    document.getElementById("writer-btn").addEventListener("click", function(event) {
+        event.preventDefault();
+
+        const blackScreen = document.getElementById("black-screen");
+        blackScreen.style.display = "flex";
+
+        setTimeout(function() {
+            window.location.href = "/writerhome";
+        }, 2000);
+    });
+</script>
+</body>
+</html>

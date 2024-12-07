@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>작품 1 - 1장: 시작하기</title>
+    <style>
+        /* 기존 스타일 복사 */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #141414;
+            margin: 0;
+            padding: 20px;
+            color: #e5e5e5;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #181818;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            padding: 20px;
+        }
+        /* 본문 내용 스타일 */
+        #chapter-content {
+            font-size: 1.1rem;
+            color: #d1d1d1;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .pagination button {
+            background-color: #ff4081;
+            color: #fff;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .pagination button:hover {
+            background-color: #ff4081;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>1장: 시작하기</h1>
+        </header>
+
+        <section id="chapter-content">
+            <p> 정국이는 33살 직업은 은행원. 직업도 안정적이고 외모도 출중하고 성격도 좋은데 아직 여자는 없음. 근데 5살 아들은 하나 있음. 그때 여자친구는 24살이란 어린 나이에 아이를 갖자 부담 또한 갖이 가졌는지 아기 낳고 돌도 안 지난 상태에서 버리고 도망갔다.
+
+
+            사실 지금 정신 차리고 살아있는 게 기적이라고 주위 사람들이 말할 정도. 그 당시 정국이 상태가 개심각했음. 사람 몰골이 아니였지.
+
+
+            아무리 마스크가 좋다고 해도 애 딸린 남자를 만나는 게 쉬운 세상은 아니고 정국이 또한 상처를 크게 받아서 연애 생각이 없음. 그 사람이 자기 아이까지 사랑해준다는 보장도 없고 어떻게 보면 이기전인 생각이니까. 아이는 부모님이 봐주시고 있고 정국이는 직장에서 30분 거리에 혼자 자취하고 있다.
+
+            여주는 25살. 이제 막 대학 졸업하고 직장을 얻은 게 정국이가 다니는 은행! 같은 지점에 막내로 들어온 여자가 아침 시간에 인사하는데 정국이는 그냥 커피 마시면서 당차에 인사하는 여주보고 성격 밝아보이네..... 신기하게 쳐다보고 있는데 팀장님이 말함.
+
+            "이쪽은 대출계 전전국 대히. 잘 생겼지?"
+
+            이때 여주랑 정국이 눈 마주쳤는데 여주가 놀란 표정으로 고개를 마구 끄덕임. 정국이 머슥해서 왜 그러냐며 손사래 치고 잘 지내보자면서 손 내밀길래 악수하고, 한 번 웃어주더니 자기 자리 돌아감.
+
+            여주는 수신계 쪽이라 정국이랑 자리는 좀 멀다. 첫 점심시간이 다가오고 교대로 밥을 먹으로가야 하는데 수신팀쪽에선 여주가 1빠로 밥을 먹으러 가게 됨. 정국이도 대출팀 1빠로 밥 먹으러가게 됐는데 수신 팀장이 여주는 이쪽 지역에 처음 살아봐서 맛집도 모르고 길도 잘 모르니까 둘이 같이 밥 먹으러 가라고 부추김.
+
+            정국이 당황하지만 앞으로 자주 얼굴 볼 사이기도 하고 그렇게 두 사람이 밖으로 나오는데 어색함 느낄 새도 없이 여주가 "대리님! 뭐 좋아하세요? 전 다 좋아요!" 초롱초롱한 눈망울로 물어보면 정국이 고민하다가... "근처에 맛있는 초밥집 있는데 거기 갈래요?" 물어보자 여주 고개 무한 끄덕임.
+
+            "고개는 한 번만 끄덕여도 돼요. 목 아프겠다."
+
+            </p>
+        </section>
+
+        <div class="pagination">
+            <button id="prev-btn">이전 회차</button>
+            <button id="next-btn">다음 회차</button>
+        </div>
+    </div>
+
+    <script>
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        prevBtn.addEventListener('click', () => {
+            window.location.href = '빙의글04.html';  // 이전 장으로 이동
+        });
+
+        nextBtn.addEventListener('click', () => {
+            window.location.href = '빙의글02.html';  // 다음 장으로 이동
+        });
+    </script>
+</body>
+</html>

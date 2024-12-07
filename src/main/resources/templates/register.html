@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 - JINFlIX</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #141414;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .register-container {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 40px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      text-align: left;
+    }
+
+    .register-container h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .register-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .register-container label {
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: #ffffff;
+    }
+
+    .register-container input[type="text"],
+    .register-container input[type="password"],
+    .register-container input[type="email"],
+    .register-container select {
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #333;
+      color: #ffffff;
+      width: 100%;
+    }
+
+    .register-container input::placeholder {
+      color: #aaaaaa;
+    }
+
+    .register-container button {
+      padding: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #ffffff;
+      background-color: #ff4081;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .register-container button:hover {
+      background-color: #ff1e63;
+    }
+
+    .register-container .help-text {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #aaaaaa;
+      text-align: center;
+    }
+
+    .register-container .help-text a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .register-container .help-text a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="register-container">
+  <h1>회원가입</h1>
+  <form action="/register" method="post" enctype="multipart/form-data">
+    <div>
+      <label for="email">이메일</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div>
+      <label for="password">비밀번호</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+    <div>
+      <label for="nickname">닉네임</label>
+      <input type="text" id="nickname" name="nickname" required>
+    </div>
+    <div>
+      <label for="gender">성별</label>
+      <select id="gender" name="gender">
+        <option value="남성">남성</option>
+        <option value="여성">여성</option>
+      </select>
+    </div>
+    <div>
+      <label for="role">역할</label>
+      <select id="role" name="role">
+        <option value="작가">작가</option>
+        <option value="읽는사람">읽는 사람</option>
+      </select>
+    </div>
+    <button type="submit">회원가입</button>
+  </form>
+
+  <div class="help-text">
+    <p>이미 계정이 있으신가요? <a href="/login">로그인하기</a></p>
+  </div>
+</div>
+</body>
+</html>
